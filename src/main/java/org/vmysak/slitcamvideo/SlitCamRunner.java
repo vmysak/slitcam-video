@@ -13,20 +13,22 @@ public class SlitCamRunner {
     public static void main(String[] args) {
         FrameGrabber grabber = new FFmpegFrameGrabber("/root/4/3.mov");
 
-        try {
-            grabber.start();
+        LOG.info("aa");
 
-            while (true) {
-                Frame img = grabber.grab();
-
-                if (img != null) {
-                    LOG.info("Processing " + img.imageDepth);
-                } else {
-                    throw new Exception("Empty frame");
-                }
-            }
-        } catch (Exception e) {
-            LOG.error("Stop");
-        }
+//        try {
+//            grabber.start();
+//
+//            while (true) {
+//                Frame img = grabber.grab();
+//
+//                if (img != null) {
+//                    LOG.warn("Processing " + img.imageDepth);
+//                } else {
+//                    throw new Exception("Empty frame");
+//                }
+//            }
+//        } catch (Exception e) {
+//            LOG.error("Stop");
+//        }
     }
 }
