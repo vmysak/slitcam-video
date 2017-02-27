@@ -1,17 +1,16 @@
 package org.vmysak.slitcamvideo;
 
-import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
-
-import javax.swing.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SlitCamRunner {
 
+    private final static Logger LOG = LoggerFactory.getLogger(SlitCamRunner.class);
+
     public static void main(String[] args) {
-        CanvasFrame canvas = new CanvasFrame("VideoCanvas");
-        canvas.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         FrameGrabber grabber = new FFmpegFrameGrabber("/root/4/3.mov");
 
         try {
@@ -19,16 +18,15 @@ public class SlitCamRunner {
 
             while (true) {
                 Frame img = grabber.grab();
-                canvas.setCanvasSize(grabber.getImageWidth(), grabber.getImageHeight());
 
                 if (img != null) {
-                    canvas.showImage(img);
+                    LOG.info("Processing " + img.imageDepth);
                 } else {
                     throw new Exception("Empty frame");
                 }
             }
         } catch (Exception e) {
-            System.out.println("Stop");
+            LOG.error("Stop");
         }
     }
 }
