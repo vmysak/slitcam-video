@@ -1,34 +1,22 @@
 package org.vmysak.slitcamvideo;
 
-import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.apache.commons.collections4.CollectionUtils;
 import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 public class SlitCamRunner {
 
     private final static Logger LOG = LoggerFactory.getLogger(SlitCamRunner.class);
 
     public static void main(String[] args) {
-        FrameGrabber grabber = new FFmpegFrameGrabber("/root/4/3.mov");
+        Map<Integer, Frame> frames = FrameLoader.loadFrames("/root/4/3.mov");
 
-        LOG.info("aa");
-
-//        try {
-//            grabber.start();
-//
-//            while (true) {
-//                Frame img = grabber.grab();
-//
-//                if (img != null) {
-//                    LOG.warn("Processing " + img.imageDepth);
-//                } else {
-//                    throw new Exception("Empty frame");
-//                }
-//            }
-//        } catch (Exception e) {
-//            LOG.error("Stop");
-//        }
+        if (CollectionUtils.isEmpty(frames.keySet())) {
+            LOG.error("Error. Loaded {} frames. Exiting" + frames.size());
+            System.exit(0);
+        }
     }
 }
