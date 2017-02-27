@@ -1,5 +1,5 @@
 cp -R ./lib/libopencv_* /usr/lib64/opencv/320/
-cp ./bin/opencv-320.jar /usr/lib64/opencv/320/
+cp ./bin/opencv* /usr/lib64/opencv/320
 ln -s /usr/lib64/opencv/320/libopencv_java320.so /usr/lib64/opencv/320/libopencv_java320.dylib
 
 export PATH="$PATH:/usr/lib64/opencv/320/"
