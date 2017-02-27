@@ -4,6 +4,11 @@ import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
+import org.opencv.videoio.VideoCapture;
+
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
 
 public class SlitCamRunner {
 
@@ -12,14 +17,27 @@ public class SlitCamRunner {
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome to OpenCV " + Core.VERSION);
-        Mat m = new Mat(5, 10, CvType.CV_8UC1, new Scalar(0));
-        System.out.println("OpenCV Mat: " + m);
-        Mat mr1 = m.row(1);
-        mr1.setTo(new Scalar(1));
-        Mat mc5 = m.col(5);
-        mc5.setTo(new Scalar(5));
-        System.out.println("OpenCV Mat data:\n" + m.dump());
+        VideoCapture capture = new VideoCapture();
+        capture.open("/root/4/3.mov");
+        Mat frame = new Mat();
+        JFrame jframe = new JFrame("MyTitle");
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JLabel vidpanel = new JLabel();
+        jframe.setContentPane(vidpanel);
+        jframe.setVisible(true);
+
+        while (true) {
+            if (capture.read(frame)) {
+                System.out.printf("s");
+                BufferedImage img = new BufferedImage(frame.width(), frame.height(), BufferedImage.TYPE_INT_ARGB_PRE);
+                byte[] data = ((DataBufferByte) img.getRaster().getDataBuffer()).getData();
+                frame.get(0, 0, data);
+                ImageIcon image = new ImageIcon(img);
+                vidpanel.setIcon(image);
+                vidpanel.repaint();
+
+            }
+        }
     }
 
 }
