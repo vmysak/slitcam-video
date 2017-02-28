@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( slitcam )
+find_package( OpenCV REQUIRED )
+set(WITH_LIBV4L ON)
+add_executable( slitcam ./src/main.cpp )
+target_link_libraries( slitcam ${OpenCV_LIBS} )
