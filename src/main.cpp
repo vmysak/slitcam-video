@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 //        return -1;
 //    }
 
-    cv:: cap("/root/4/3.MOV");
+    cv::cap("/root/4/3.MOV");
     if (!cap.isOpened()) {
         cout << "Can't open file";
         return -1;
