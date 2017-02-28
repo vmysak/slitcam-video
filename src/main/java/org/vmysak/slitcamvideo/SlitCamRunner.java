@@ -35,6 +35,6 @@ public class SlitCamRunner {
 //        cvSetImageROI(img.bytes, r);
         IplImage cropped = cvCreateImage(new CvSize(img.w, img.h), img.depth, img.channels);
 //        cvCopy(img.bytes, cropped);
-        cvSaveImage("/tmp/wtf/prt.jpg" + img.index, cropped);
+        cvSaveImage("/tmp/wtf/prt"+img.index+".jpg", cropped);
     }
 }
