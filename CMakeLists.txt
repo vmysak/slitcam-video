@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+set(CMAKE_BUILD_TYPE DEbug)
 project( slitcam )
 find_package( OpenCV REQUIRED )
 add_executable( slitcam ./src/main.cpp )

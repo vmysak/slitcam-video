@@ -18,5 +18,21 @@ int main(int argc, char** argv) {
     double fps = cap.get(CV_CAP_PROP_FPS);
     cout << "Frames per second: " << fps << endl;
 
+    double count = cap.get(CV_CAP_PROP_FRAME_COUNT); //get the frame count
+    cap.set(CV_CAP_PROP_POS_FRAMES,count-1); //Set index to last frame
+    cv::namedWindow("MyVideo",CV_WINDOW_AUTOSIZE);
+
+    while(1)
+    {
+        cv::Mat frame;
+        bool success = cap.read(frame); 
+        if (!success){
+          cout << "Cannot read  frame " << endl;
+          break;
+        }
+        cv::imshow("MyVideo", frame);
+        if(cv::waitKey(0) == 27) break;
+    }
+    
     return 0;
 }

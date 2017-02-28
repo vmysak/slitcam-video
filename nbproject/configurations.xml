@@ -30,7 +30,7 @@
           <buildCommandWorkingDir>build</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>build/slitcam</executablePath>
           <ccTool>
             <incDir>
               <pElem>/usr/local/include</pElem>
