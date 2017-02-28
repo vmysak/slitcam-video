@@ -6,4 +6,4 @@ export PATH="$PATH:/usr/lib64/opencv/320/"
 
 -Djava.library.path=/usr/lib64/opencv/320/
 
-export PATH="$PATH:/usr/lib64/opencv/320/" && java -Djava.library.path=/usr/lib64/opencv/320/ -jar ./target/slitcam-video.jar
+export PATH="$PATH:/usr/lib64/opencv/320/" && java -XX:MaxDirectMemorySize=4096m -Djava.library.path=/usr/lib64/opencv/320/ -jar ./target/slitcam-video.jar
